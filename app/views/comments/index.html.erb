@@ -9,4 +9,6 @@
   <% end %>
 </div>
 <%= link_to "New comment", new_comment_path %>
-<%= pagy_nav(@pagy).html_safe %>
+<%= tag.div id: "load_more_button" do %>
+  <%= button_to "More...", pagy_url_for(@pagy, @pagy.next) %>
+<% end %>
