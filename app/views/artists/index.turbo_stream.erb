@@ -1,0 +1,13 @@
+<%= turbo_stream.append :artists do %>
+  <% @artists.each do |artist| %>
+    <%= render artist %>
+    <p>
+      <%= link_to "Show this artist", artist %>
+    </p>
+  <% end %>
+<% end %>
+<%= turbo_stream.replace :pagination do %>
+  <% if @pagy.next.present? %>
+    <%= turbo_frame_tag :pagination, loading: :lazy, src: artists_path(format: :turbo_stream, page: @pagy.next) %>
+  <% end %>
+<% end %>
