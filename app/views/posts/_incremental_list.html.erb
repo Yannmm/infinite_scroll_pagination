@@ -1,0 +1,9 @@
+<%= turbo_frame_tag "posts-page-#{@pagy.page}" do %>
+  <% @posts.each do |post| %>
+    <%= render post %>
+    <p>
+      <%= link_to "Show this post", post %>
+    </p>
+  <% end %>
+  <%= render "posts/next_page" %>
+<% end %>

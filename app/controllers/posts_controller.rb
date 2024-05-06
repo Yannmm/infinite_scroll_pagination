@@ -4,6 +4,9 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
     @pagy, @posts = pagy(Post.order(created_at: :desc), items: 5)
+
+    render partial: "posts/incremental_list" if params[:page]
+  
   end
 
   # GET /posts/1 or /posts/1.json
